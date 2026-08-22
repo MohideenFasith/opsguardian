@@ -1,0 +1,7 @@
+{
+  "crm.customer_export": ["stg_customer_normalized"],
+  "stg_customer_normalized": ["fct_orders_customer_join", "customer_ltv_features"],
+  "fct_orders_customer_join": ["executive_customer_dashboard"],
+  "customer_ltv_features": ["executive_customer_dashboard"],
+  "executive_customer_dashboard": []
+}

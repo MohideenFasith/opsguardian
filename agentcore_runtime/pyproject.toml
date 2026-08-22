@@ -1,0 +1,10 @@
+[project]
+name = "opsguardian-agentcore"
+version = "1.0.0"
+description = "OpsGuardian Strands agent for Amazon Bedrock AgentCore Runtime"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+  "bedrock-agentcore>=1.21,<2",
+  "strands-agents>=1.50,<2",
+  "pydantic>=2.11,<3",
+]

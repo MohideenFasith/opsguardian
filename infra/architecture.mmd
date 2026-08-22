@@ -1,0 +1,13 @@
+flowchart LR
+  A[Pipeline event / Web demo] --> B[Deterministic Incident Engine]
+  B --> C[Strands Agent: Investigator + Planner]
+  C <--> D[Amazon Bedrock]
+  C <--> E[Bounded tools: Inspect / Lineage / Sandbox]
+  B --> F[Policy + Approval Gate]
+  F -->|material risk| H((Human Engineer))
+  H --> F
+  F --> G[Verification + Incident Report]
+  G --> B
+  B <--> I[(SQLite local / DynamoDB optional)]
+  C -. production runtime .-> J[Amazon Bedrock AgentCore]
+  J --> K[CloudWatch / OpenTelemetry]

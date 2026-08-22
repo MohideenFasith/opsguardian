@@ -1,0 +1,32 @@
+digraph OpsGuardian {
+  graph [rankdir=LR, bgcolor="#071019", pad="0.4", nodesep="0.55", ranksep="0.8", fontname="Arial", label="OpsGuardian — Strands Agents + Amazon Bedrock", labelloc="t", fontsize=20, fontcolor="#eef6fa"];
+  node [shape=box, style="rounded,filled", fillcolor="#101f2b", color="#496476", fontcolor="#eef6fa", fontname="Arial", fontsize=11, margin="0.16,0.10"];
+  edge [color="#8fa4b2", fontcolor="#b9cad5", fontname="Arial", fontsize=9, arrowsize=0.8];
+
+  event [label="Pipeline event /\nWeb demo", fillcolor="#172634"];
+  engine [label="Deterministic\nIncident Engine", fillcolor="#132b32"];
+  strands [label="Strands Agent\nInvestigator + Planner", fillcolor="#2a2415"];
+  bedrock [label="Amazon Bedrock\nFoundation Model", fillcolor="#2b2013"];
+  tools [label="Bounded Tools\nInspect • Lineage • Sandbox", fillcolor="#112b2a"];
+  policy [label="Policy + Approval Gate\n(no LLM bypass)", fillcolor="#301d18"];
+  verify [label="Verification +\nIncident Report", fillcolor="#112b2a"];
+  agentcore [label="Amazon Bedrock\nAgentCore Runtime", fillcolor="#231c32"];
+  obs [label="CloudWatch / OTEL\nObservability", fillcolor="#191d2d"];
+  store [label="SQLite local /\nDynamoDB optional", fillcolor="#172634"];
+  human [label="Human Engineer\nonly for material risk", shape=ellipse, fillcolor="#332814"];
+
+  event -> engine [label="incident"];
+  engine -> strands [label="diagnose / plan"];
+  strands -> bedrock [label="model inference"];
+  bedrock -> strands;
+  strands -> tools [label="tool calls"];
+  tools -> strands [label="evidence"];
+  engine -> policy [label="validated repair"];
+  policy -> human [label="medium risk"];
+  human -> policy [label="approve / reject"];
+  policy -> verify [label="authorized"];
+  verify -> engine [label="result"];
+  engine -> store [dir=both, label="state + audit"];
+  strands -> agentcore [style=dashed, label="production runtime"];
+  agentcore -> obs [label="traces / metrics"];
+}

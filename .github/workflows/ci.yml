@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q
+      - run: python scripts/demo_smoke.py
+      - run: python -m compileall -q opsguardian web.py agentcore_runtime/main.py
+      - run: node --check static/app.js
+      - run: bash -n scripts/*.sh
+      - run: ./scripts/prepare_public_repo.sh

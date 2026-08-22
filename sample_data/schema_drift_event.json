@@ -1,0 +1,10 @@
+{
+  "type": "schema_drift",
+  "pipeline": "customer_360_daily",
+  "dataset": "crm.customer_export",
+  "field": "customer_id",
+  "expected_type": "INTEGER",
+  "observed_type": "STRING",
+  "first_bad_version": "crm_export_v42",
+  "sample_new_values": ["100482", "C-100483"]
+}

@@ -1,0 +1,6 @@
+[
+  {"customer_id": 100480, "email": "alex@example.test", "order_id": "O-501", "amount": 42.50},
+  {"customer_id": 100481, "email": "bea@example.test", "order_id": "O-502", "amount": 19.00},
+  {"customer_id": "100482", "email": "chen@example.test", "order_id": "O-503", "amount": 88.25},
+  {"customer_id": "C-100483", "email": "dev@example.test", "order_id": "O-504", "amount": 12.75}
+]

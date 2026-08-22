@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpsGuardian — Strands Incident Agent</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">AGENTS FOR HUMANS • PROFESSIONAL AGENTS</div>
+        <h1>OpsGuardian</h1>
+        <p class="sub">An autonomous on-call partner for data engineers. It investigates pipeline failures, traces blast radius, validates repairs, gates risky production changes, verifies recovery, and writes the incident report.</p>
+      </div>
+      <div class="badges">
+        <span>Strands Agents</span><span>Amazon Bedrock</span><span>AgentCore Ready</span><span>CloudWatch</span><span>DynamoDB Optional</span>
+      </div>
+    </header>
+
+    <section class="hero-grid">
+      <div class="panel incident-panel">
+        <div class="panel-head">
+          <div><div class="kicker">LIVE INCIDENT</div><h2 id="incidentTitle">No active incident</h2></div>
+          <div id="statusPill" class="status idle">IDLE</div>
+        </div>
+        <div class="metric-grid">
+          <div><span>Pipeline</span><strong id="pipeline">customer_360_daily</strong></div>
+          <div><span>Risk</span><strong id="risk">—</strong></div>
+          <div><span>Assets affected</span><strong id="assets">0</strong></div>
+          <div><span>Validation</span><strong id="validation">—</strong></div>
+        </div>
+        <div class="actions">
+          <button id="injectBtn" class="primary">Inject schema drift</button>
+          <button id="resetBtn" class="ghost">Reset</button>
+        </div>
+        <div id="approvalBox" class="approval hidden">
+          <div><strong>Human decision required</strong><p>The agent finished its investigation and sandbox validation. Policy blocks this medium-risk change until a human decides.</p></div>
+          <div class="approval-actions"><button id="approveBtn" class="approve">Approve repair</button><button id="rejectBtn" class="reject">Reject</button></div>
+        </div>
+      </div>
+
+      <div class="panel trust-panel">
+        <div class="kicker">QUIET UNTIL IT MATTERS</div>
+        <h3>Automate toil. Preserve judgment.</h3>
+        <ul>
+          <li><b>Strands tool use</b><span>The reasoning agent can inspect incident facts, trace lineage, and run sandbox checks.</span></li>
+          <li><b>Executable evidence</b><span>Repairs must pass real regression checks, not model self-assessment.</span></li>
+          <li><b>Risk-gated actions</b><span>Business-critical changes stop at a human approval boundary.</span></li>
+          <li><b>Fail closed</b><span>Timeouts, unsupported operations, and failed verification never deploy silently.</span></li>
+          <li><b>Auditable</b><span>Every agent, tool, policy, and human action appears in the timeline.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel timeline-panel">
+      <div class="panel-head"><div><div class="kicker">AGENT EXECUTION TRACE</div><h2>Autonomy timeline</h2></div><div id="agentMode" class="mode">offline demo</div></div>
+      <div id="timeline" class="timeline"><div class="empty">Inject a controlled schema-drift event to start the workflow.</div></div>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="panel"><div class="kicker">ROOT CAUSE</div><h3 id="rootCause">Waiting for incident</h3><p id="evidence">The Strands investigator will correlate event evidence and downstream impact.</p></div>
+      <div class="panel"><div class="kicker">SELECTED REPAIR</div><h3 id="repair">Waiting for validation</h3><code id="patch">—</code></div>
+      <div class="panel"><div class="kicker">VERIFICATION</div><h3 id="verification">Not run</h3><p id="verificationDetail">No controlled production change has been applied.</p></div>
+    </section>
+
+    <section class="panel report-panel"><div class="kicker">POST-INCIDENT REPORT</div><p id="report">After verification, the agent writes a concise report from the recorded evidence.</p></section>
+
+    <footer><span>Built for AWS Agents for Humans • Professional Agents</span><span>Backend: <a href="/docs">FastAPI docs</a> • <a href="/health">health</a></span></footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
