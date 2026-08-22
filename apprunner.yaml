@@ -1,0 +1,24 @@
+version: 1.0
+runtime: python311
+
+build:
+  commands:
+    build:
+      - echo "Preparing OpsGuardian for AWS App Runner"
+
+run:
+  runtime-version: 3.11
+  pre-run:
+    - pip3 install -r requirements.txt
+  command: uvicorn web:app --host 0.0.0.0 --port 8080
+  network:
+    port: 8080
+  env:
+    - name: STRANDS_MODE
+      value: "offline"
+    - name: DEPLOYMENT_ENV
+      value: "aws-apprunner"
+    - name: DEMO_DELAY_MS
+      value: "420"
+    - name: USE_DYNAMODB
+      value: "false"
